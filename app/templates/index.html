@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+   <title>registration</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function bind() {
+      var companyData = [
+        { Co_code: "CA0001", Co_name: "State Bank Of India", IBR_name: "SBI", Face_value: "10.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" },
+        { Co_code: "CA0002", Co_name: "HDFC",                IBR_name: "HDFC", Face_value: "20.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" },
+        { Co_code: "CA0003", Co_name: "Canara Bank",         IBR_name: "CNK", Face_value: "15.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" },
+        { Co_code: "CA0004", Co_name: "ICICI",               IBR_name: "ICICI", Face_value: "10.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" },
+        { Co_code: "CA0005", Co_name: "Indian Overseas Bank",IBR_name: "IOB", Face_value: "20.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" },
+        { Co_code: "CA0006", Co_name: "Indian Bank",         IBR_name: "IB", Face_value: "15.00", DATE_OF_INCO: "01-01-2002", CNVTOPUBDT: "01-01-2003" }
+      ];
+
+      $("#Co_code").change(function bind() {
+        var Co_code = $(this).val();
+        var company = companyData.find(function bind(c) {
+          return c.Co_code === Co_code;
+        });
+
+        if (company) {
+          $("#Co_name").val(company.Co_name);
+          $("#IBR_name").val(company.IBR_name);
+          $("#Face_value").val(company.Face_value);
+          $("#DATE_OF_INCO").val(company.DATE_OF_INCO);
+          $("#CNVTOPUBDT").val(company.CNVTOPUBDT);
+
+        } else {
+          $("#Co_name").val("");
+          $("#IBR_name").val("");
+          $("#Face_value").val("");
+          $("#DATE_OF_INCO").val("");
+          $("#CNVTOPUBDT").val("");
+        }
+      });
+
+      $("#Co_name").change(function bind() {
+        var Co_name = $(this).val();
+        var company = companyData.find(function bind(c) {
+          return c.Co_name === Co_name;
+        });
+
+        if (company) {
+          $("#Co_code").val(company.Co_code);
+          $("#IBR_name").val(company.IBR_name);
+          $("#Face_value").val(company.Face_value);
+          $("#DATE_OF_INCO").val(company.DATE_OF_INCO);
+          $("#CNVTOPUBDT").val(company.CNVTOPUBDT);
+        } else {
+          $("#Co_code").val("");
+          $("#IBR_name").val("");
+          $("#Face_value").val("");
+          $("#DATE_OF_INCO").val("");
+          $("#CNVTOPBDT").val("");
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+  </nav>
+  
+  <h1 class="text-center">Company Registration Form</h1>
+
+  <div class="container">
+    <form class="" method="post">
+         {% csrf_token %} 
+        <div class="form-group">
+
+  <label for="Co_code">Co_code:</label>
+  <select name="Co_code" type="text" id="Co_code" class="form-control" onchange="bind()" >
+    <option value="">Select Code</option>
+    <option value="CA0001">CA0001</option>
+    <option value="CA0002">CA0002</option>
+    <option value="CA0003">CA0003</option>
+    <option value="CA0004">CA0004</option>
+    <option value="CA0005">CA0005</option>
+    <option value="CA0006">CA0006</option>
+  </select><br>
+
+  <label for="Co_name">Co_name:</label>
+  <select name="Co_name" type="text" id="Co_name" class="form-control" onchange="bind()" >
+    <option value="">Select Name</option>
+    <option value="State Bank Of India">State Bank Of India</option>
+    <option value="HDFC">HDFC</option>
+    <option value="Canara Bank">Canara Bank</option>
+    <option value="ICICI">ICICI</option>
+    <option value="Indian Overseas Bank">Indian Overseas Bank</option>
+    <option value="Indian Bank">Indian Bank</option>
+  </select><br>
+
+  <label for="IBR_name">Face_value:</label>
+  <input name="IBR_name" type="text" class="form-control" id="IBR_name" readonly><br>
+
+  <label for="Face_value">Face_value:</label>
+  <input name="Face_value" type="text" class="form-control" id="Face_value" readonly><br>
+
+  <label for="DATE_OF_INCO">DATE_OF_INCO:</label>
+  <input name="DATE_OF_INCO" type="text" class="form-control" id="DATE_OF_INCO" readonly><br>
+
+  <label for="CNVTOPUBDT">CNVTOPUBDT:</label>
+  <input name="CNVTOPUBDT" type="text" class="form-control" id="CNVTOPUBDT" readonly><br>
+
+  <input type="submit" class="btn btn-success btn-lg mt-1 m1-4" value="submit"> 
+
+</div> 
+</form>   
+</div>
+
+</body>
+</html>
